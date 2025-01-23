@@ -268,3 +268,89 @@ Constructores y Getters/Setters: Generados de manera estándar.
 
 (Horarios Repository)
 Similar a los repositorios anteriores, extiende JpaRepository para heredar los métodos CRUD básicos para la entidad Horario, utilizando Integer como tipo de la clave primaria.
+
+Versión 0.2.1.1: (Inicio Servicios - Creacion de TeatroService y TeatroServiceImpl )
+UserService: Para la lógica de negocio relacionada con los usuarios (crear usuarios, obtener usuarios, actualizar información de usuarios, etc.).
+PeliculaService: Para la lógica de negocio relacionada con las películas (crear películas, obtener películas, buscar películas, etc.).
+TeatroService: Para la lógica de negocio relacionada con los teatros.
+HorarioService: Para la lógica de negocio relacionada con los horarios de proyección.
+ReservaService: Para la lógica de negocio relacionada con las reservas.
+
+Versión 0.2.2.1: (Se crean los servicios de Pelicula)
+(Documentacion en la 0.2.4.1)
+Versión 0.2.3.1: (Se crean los servicios de Horarios)
+(Documentacion en la 0.2.4.1 Reserva)
+Versión 0.2.4.1: (Se crean los servicios de Reserva (y se documenta todo))
+
+la capa de servicios en la arquitectura de tu proyecto actúa como una capa intermedia entre los controladores (Controllers) y los repositorios (Repositories). Su principal responsabilidad es encapsular y gestionar la lógica de negocio de la aplicación. En lugar de que los controladores o los repositorios contengan la lógica compleja, los servicios se encargan de:
+Implementar las reglas y validaciones específicas del negocio.
+Coordinar las operaciones entre diferentes entidades y repositorios si es necesario.
+Proporcionar una interfaz clara y cohesiva para que los controladores accedan a la funcionalidad del backend.
+1. UserService y UserServiceImpl
+UserService (Interfaz): Define las operaciones de negocio relacionadas con la entidad User (Usuario).
+crearUsuario(User usuario): Crea un nuevo usuario en el sistema.
+obtenerUsuarioPorId(Integer id): Recupera un usuario por su identificador único (ID).
+
+obtenerUsuarioPorEmail(String email): Recupera un usuario por su dirección de correo electrónico.
+listarTodosLosUsuarios(): Recupera una lista de todos los usuarios registrados en el sistema.
+actualizarUsuario(Integer id, User usuarioActualizado): Actualiza la información de un usuario existente.
+eliminarUsuario(Integer id): Elimina un usuario del sistema por su ID.
+UserServiceImpl (Implementación): Implementa la interfaz UserService.
+@Service: Anotación de Spring que marca esta clase como un componente de servicio, permitiendo la inyección de dependencias.
+@Autowired private final UserRepository userRepository;: Inyecta una instancia de UserRepository para acceder a la capa de datos de usuarios.
+crearUsuario(User usuario): Utiliza userRepository.save(usuario) para persistir un nuevo usuario en la base de datos. Podría contener validaciones adicionales antes de guardar (no implementado aún).
+obtenerUsuarioPorId(Integer id): Utiliza userRepository.findById(id) para buscar y retornar un usuario por su ID.
+obtenerUsuarioPorEmail(String email): Implementación INCOMPLETA (Ejemplo): Actualmente, solo retorna un usuario ficticio. Deberá implementarse la búsqueda real por email (posiblemente con un método personalizado en UserRepository).
+listarTodosLosUsuarios(): Utiliza userRepository.findAll() para obtener y retornar una lista de todos los usuarios.
+actualizarUsuario(Integer id, User usuarioActualizado):
+Recupera el usuario existente por ID usando userRepository.findById(id).
+Si existe, actualiza los campos modificables del usuario existente con los valores de usuarioActualizado.
+Guarda el usuario actualizado con userRepository.save(usuarioExistente).
+eliminarUsuario(Integer id):
+Verifica si el usuario existe usando userRepository.existsById(id).
+Si existe, elimina el usuario usando userRepository.deleteById(id).
+2. TeatroService y TeatroServiceImpl
+TeatroService (Interfaz): Define las operaciones de negocio para la entidad Teatro.
+crearTeatro(Teatro teatro): Crea un nuevo teatro.
+obtenerTeatroPorId(Integer id): Obtiene un teatro por su ID.
+listarTodosLosTeatros(): Obtiene una lista de todos los teatros.
+actualizarTeatro(Integer id, Teatro teatroActualizado): Actualiza la información de un teatro existente.
+eliminarTeatro(Integer id): Elimina un teatro por su ID.
+TeatroServiceImpl (Implementación): Implementa TeatroService.
+@Service: Componente de servicio de Spring.
+@Autowired private final TeatroRepository teatroRepository;: Inyecta TeatroRepository.
+Métodos (similar a UserServiceImpl): Cada método implementa la lógica correspondiente utilizando los métodos CRUD del TeatroRepository (save, findById, findAll, deleteById, existsById). La lógica de actualización se encarga de recuperar el teatro existente, actualizar los campos permitidos (nombre, ubicación, capacidad) y guardar los cambios.
+3. PeliculaService y PeliculaServiceImpl
+PeliculaService (Interfaz): Define las operaciones de negocio para la entidad Pelicula.
+crearPelicula(Pelicula pelicula): Crea una nueva película.
+obtenerPeliculaPorId(Integer id): Obtiene una película por su ID.
+listarTodasLasPeliculas(): Obtiene una lista de todas las películas.
+actualizarPelicula(Integer id, Pelicula peliculaActualizada): Actualiza la información de una película existente.
+eliminarPelicula(Integer id): Elimina una película por su ID.
+PeliculaServiceImpl (Implementación): Implementa PeliculaService.
+@Service: Componente de servicio de Spring.
+@Autowired private final PeliculaRepository peliculaRepository;: Inyecta PeliculaRepository.
+Métodos (similar a UserServiceImpl): Implementa la lógica utilizando PeliculaRepository para operaciones CRUD sobre películas. La actualización permite modificar título, descripción, duración y lenguaje.
+4. HorarioService y HorarioServiceImpl
+HorarioService (Interfaz): Define las operaciones de negocio para la entidad Horario.
+crearHorario(Horario horario): Crea un nuevo horario de proyección.
+obtenerHorarioPorId(Integer id): Obtiene un horario por su ID.
+listarTodosLosHorarios(): Obtiene una lista de todos los horarios.
+actualizarHorario(Integer id, Horario horarioActualizado): Actualiza la información de un horario existente.
+eliminarHorario(Integer id): Elimina un horario por su ID.
+HorarioServiceImpl (Implementación): Implementa HorarioService.
+@Service: Componente de servicio de Spring.
+@Autowired private final HorarioRepository horarioRepository;: Inyecta HorarioRepository.
+Métodos (similar a UserServiceImpl): Implementa la lógica utilizando HorarioRepository para operaciones CRUD sobre horarios. La actualización permite modificar la película, el teatro, la fecha y la hora de proyección.
+5. ReservaService y ReservaServiceImpl
+ReservaService (Interfaz): Define las operaciones de negocio para la entidad Reserva.
+crearReserva(Reserva reserva): Crea una nueva reserva.
+obtenerReservaPorId(Integer id): Obtiene una reserva por su ID.
+listarTodasLasReservas(): Obtiene una lista de todas las reservas.
+actualizarReserva(Integer id, Reserva reservaActualizada): Actualiza la información de una reserva existente.
+eliminarReserva(Integer id): Elimina una reserva por su ID.
+ReservaServiceImpl (Implementación): Implementa ReservaService.
+@Service: Componente de servicio de Spring.
+@Autowired private final ReservaRepository reservaRepository;: Inyecta ReservaRepository.
+Métodos (similar a UserServiceImpl): Implementa la lógica utilizando ReservaRepository para operaciones CRUD sobre reservas. La actualización permite modificar el horario, el usuario, el número de tickets y el precio total de la reserva.
+
