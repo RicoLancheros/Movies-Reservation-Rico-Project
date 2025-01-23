@@ -53,7 +53,7 @@ public class HorariosServiceImpl implements HorarioService {
             horarioExistente.setTeatro(horarioActualizado.getTeatro());
             horarioExistente.setShow_date(horarioActualizado.getShow_date());
             horarioExistente.setShow_time(horarioActualizado.getShow_time());
-            //No se actualiza la fecha de creación
+            //No se actualiza la fecha de creación (se actualiza sola con el metodo save)
 
             return horariosRepository.save(horarioExistente);
         }else{

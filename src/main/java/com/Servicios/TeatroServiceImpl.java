@@ -43,6 +43,8 @@ public class TeatroServiceImpl implements TeatroService {
             teatroExistente.setName(teatroActualizado.getName());
             teatroExistente.setLocation(teatroActualizado.getLocation());
             teatroExistente.setCapacity(teatroActualizado.getCapacity());
+            teatroExistente.setCreated_at(teatroActualizado.getCreated_at()); //Actualizado Versión 0.2.4.1
+
             //No se actualiza la fecha de creación
 
             return teatroRepository.save(teatroExistente);
