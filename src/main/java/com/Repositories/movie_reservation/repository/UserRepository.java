@@ -1,6 +1,7 @@
 package com.Repositories.movie_reservation.repository;
 
-import org.apache.catalina.User;
+
+import com.Cine.Project.Movies_Reservation_Rico_Project.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
