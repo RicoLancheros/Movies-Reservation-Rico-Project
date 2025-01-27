@@ -67,6 +67,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Retorna el código 204 No Content si se eliminó correctamente
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Retorna el código 404 Not Found si no se encontró el usuario a eliminar
+            // o si ocurrió un error al eliminarlo (NOTA 27)
         }
     }
 }
