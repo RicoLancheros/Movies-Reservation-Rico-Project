@@ -1,6 +1,6 @@
 package com.Servicios;
 
-import com.Cine.Project.Movies_Reservation_Rico_Project.Teatro;
+import com.Cine.Project.Autor.Project.Teatro;
 import com.Repositories.movie_reservation.repository.TeatroRepository; // Check this import
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

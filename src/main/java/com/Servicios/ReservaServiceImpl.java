@@ -1,6 +1,6 @@
 package com.Servicios;
 
-import com.Cine.Project.Movies_Reservation_Rico_Project.Reserva;
+import com.Cine.Project.Autor.Project.Reserva;
 import com.Repositories.movie_reservation.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

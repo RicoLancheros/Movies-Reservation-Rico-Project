@@ -187,7 +187,7 @@ Los demás getters y setters: Siguen el mismo patrón para los demás atributos 
 Versión 0.3.2: (Peliculas Repository)
 
 package com.Cine.Project.Movies_Reservation_Rico_Project.repositories;: Define el paquete del repositorio. Asegúrate de que coincida con la estructura de tu proyecto.
-import com.Cine.Project.Movies_Reservation_Rico_Project.Pelicula;: Importa la clase de entidad Pelicula que acabas de crear.
+import com.Cine.Project.Autor.Project.Pelicula;: Importa la clase de entidad Pelicula que acabas de crear.
 import org.springframework.data.jpa.repository.JpaRepository;: Importa la interfaz JpaRepository de Spring Data JPA.
 import org.springframework.stereotype.Repository;: Importa la anotación @Repository de Spring.
 @Repository: Esta anotación marca la interfaz PeliculaRepository como un componente de repositorio en Spring. Esto permite que Spring gestione esta interfaz y proporcione la implementación necesaria en tiempo de ejecución.
@@ -231,7 +231,7 @@ El constructor con argumentos permite crear instancias de Teatro con valores ini
 Getters y Setters: Proporcionan métodos para acceder y modificar los atributos de la clase.
 ///
 package com.Cine.Project.Movies_Reservation_Rico_Project.repositories;: Define el paquete del repositorio.
-import com.Cine.Project.Movies_Reservation_Rico_Project.Teatro;: Importa la clase de entidad Teatro.
+import com.Cine.Project.Autor.Project.Teatro;: Importa la clase de entidad Teatro.
 import org.springframework.data.jpa.repository.JpaRepository;: Importa la interfaz JpaRepository de Spring Data JPA.
 import org.springframework.stereotype.Repository;: Importa la anotación @Repository de Spring.
 @Repository: Marca la interfaz como un componente de repositorio en Spring.

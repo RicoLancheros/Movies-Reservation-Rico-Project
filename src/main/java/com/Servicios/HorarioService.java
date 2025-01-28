@@ -1,6 +1,6 @@
 package com.Servicios;
 
-import com.Cine.Project.Movies_Reservation_Rico_Project.Horarios;
+import com.Cine.Project.Autor.Project.Horarios;
 
 import java.util.List;
 import java.util.Optional;

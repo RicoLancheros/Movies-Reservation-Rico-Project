@@ -1,4 +1,4 @@
-package com.Cine.Project.Movies_Reservation_Rico_Project;
+package com.Cine.Project.Autor.Project;
 
 
 import jakarta.persistence.*;

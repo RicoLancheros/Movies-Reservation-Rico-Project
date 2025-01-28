@@ -1,7 +1,7 @@
 package com.Controllers;
 
 
-import com.Cine.Project.Movies_Reservation_Rico_Project.User;
+import com.Cine.Project.Autor.Project.User;
 import com.Servicios.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

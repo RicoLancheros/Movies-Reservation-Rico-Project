@@ -1,6 +1,6 @@
 package com.Servicios;
 
-import com.Cine.Project.Movies_Reservation_Rico_Project.Pelicula;
+import com.Cine.Project.Autor.Project.Pelicula;
 
 import java.util.List;
 import java.util.Optional;
